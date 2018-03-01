@@ -113,7 +113,6 @@ ENV PHP_NEWRELIC_APPNAME        ""
 COPY apache2-coredumps.conf /etc/security/limits.d/apache2-coredumps.conf
 RUN mkdir /tmp/apache2-coredumps && chown ${APACHE_RUN_USER}:${APACHE_RUN_GROUP} /tmp/apache2-coredumps && chmod 700 /tmp/apache2-coredumps
 COPY coredump.conf /etc/apache2/conf-available/coredump.conf
-COPY .gdbinit /root/.gdbinit
 
 COPY opcache_bitrix.blacklist /etc/php5/opcache_bitrix.blacklist
 
