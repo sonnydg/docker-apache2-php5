@@ -35,7 +35,7 @@ if [ -n "$PHP_NEWRELIC_LICENSE_KEY" -a -n "$PHP_NEWRELIC_APPNAME" ]; then
 fi
 
 export APACHE_SERVER_NAME="${APACHE_SERVER_NAME:-$(hostname)}"
-export APACHE_DOCUMENT_ROOT="${APACHE_DOCUMENT_ROOT:-/var/www/html}"
+export APACHE_DOCUMENT_ROOT="${APACHE_DOCUMENT_ROOT:-/var/www}"
 
 echo "Updating apache/php configuration files."
 /usr/local/bin/confd -onetime -backend env
