@@ -141,6 +141,7 @@ COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
 
 COPY docker-entrypoint.sh /
+RUN chmod 755 /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["apache2"]
