@@ -43,6 +43,7 @@ RUN \
         imagemagick \
         flvtool2 \
         ghostscript \
+        php5-pgsql \
         wget \
         pngquant \
         newrelic-php5 \
