@@ -22,7 +22,6 @@ RUN \
         libaprutil1-dbg \
         php5-cli \
         php5-mysql \
-        php5-pgsql \
         php5-gd \
         php5-mcrypt \
         php5-curl \
@@ -77,6 +76,8 @@ RUN \
     && curl -o /usr/local/bin/composer https://getcomposer.org/download/1.4.2/composer.phar \
     && chown root:root /usr/local/bin/composer \
     && chmod 0755 /usr/local/bin/composer
+
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
 
 RUN \
     rm /etc/php5/apache2/conf.d/* \
@@ -143,6 +144,8 @@ COPY apache2-mods/autoindex.conf /etc/apache2/mods-available/autoindex.conf
 
 COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
+
+RUN apt-get update && apt-get install -y libpq-dev && php5-pgsql
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
