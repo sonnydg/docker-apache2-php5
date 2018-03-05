@@ -22,6 +22,7 @@ RUN \
         libaprutil1-dbg \
         php5-cli \
         php5-mysql \
+        php5-pgsql \
         php5-gd \
         php5-mcrypt \
         php5-curl \
@@ -43,10 +44,10 @@ RUN \
         imagemagick \
         flvtool2 \
         ghostscript \
-        php5-pgsql \
         wget \
         pngquant \
         newrelic-php5 \
+        nano \
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
@@ -110,6 +111,8 @@ ENV PHP_MBSTRING_FUNC_OVERLOAD 0
 ENV PHP_ALWAYS_POPULATE_RAW_POST_DATA 0
 ENV PHP_NEWRELIC_LICENSE_KEY    ""
 ENV PHP_NEWRELIC_APPNAME        ""
+ENV PHP_SMTP 127.0.0.1
+ENV PHP_SMTP_FROM noreply@noreply.com
 
 COPY apache2-coredumps.conf /etc/security/limits.d/apache2-coredumps.conf
 RUN mkdir /tmp/apache2-coredumps && chown ${APACHE_RUN_USER}:${APACHE_RUN_GROUP} /tmp/apache2-coredumps && chmod 700 /tmp/apache2-coredumps
