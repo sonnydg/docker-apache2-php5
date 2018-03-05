@@ -143,7 +143,7 @@ COPY apache2-mods/autoindex.conf /etc/apache2/mods-available/autoindex.conf
 COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
 
-RUN apt-get update && apt-get install -y libpq-dev && php5-pgsql
+RUN apt-get update && apt-get install -y libpq-dev php5-pgsql
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
