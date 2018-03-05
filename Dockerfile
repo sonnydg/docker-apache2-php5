@@ -77,8 +77,6 @@ RUN \
     && chown root:root /usr/local/bin/composer \
     && chmod 0755 /usr/local/bin/composer
 
-RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
-
 RUN \
     rm /etc/php5/apache2/conf.d/* \
     && rm /etc/php5/cli/conf.d/* \
