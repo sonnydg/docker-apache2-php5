@@ -23,6 +23,7 @@ RUN \
         gdb \
         php5 \
         php5-dev \
+        php-pear \
         ffmpeg \
         imagemagick \
         flvtool2 \
@@ -143,7 +144,6 @@ RUN apt-get update && apt-get install -y libpq-dev \
         php5-phalcon \
         php5-mongo \
         php5-amqp \
-        php-pear \
         php5-dbg \
         php5-json
 
