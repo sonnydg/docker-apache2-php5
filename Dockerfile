@@ -20,24 +20,6 @@ RUN \
         apache2-dbg \
         libapr1-dbg \
         libaprutil1-dbg \
-        php5-cli \
-        php5-mysql \
-        php5-gd \
-        php5-mcrypt \
-        php5-curl \
-        php5-memcache \
-        php5-xsl \
-        php5-xdebug \
-        php5-intl \
-        php5-xmlrpc \
-        php5-apcu \
-        php5-phalcon \
-        php5-mongo \
-        php5-amqp \
-        php5 \
-        php5-dev \
-        php-pear \
-        php5-dbg \
         gdb \
         ffmpeg \
         imagemagick \
@@ -143,7 +125,26 @@ COPY apache2-mods/autoindex.conf /etc/apache2/mods-available/autoindex.conf
 COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
 
-RUN apt-get update && apt-get install -y libpq-dev php5-pgsql
+RUN apt-get update && apt-get install -y libpq-dev \
+        php5-pgsql php5-cli \
+        php5-mysql \
+        php5-gd \
+        php5-mcrypt \
+        php5-curl \
+        php5-memcache \
+        php5-xsl \
+        php5-xdebug \
+        php5-intl \
+        php5-xmlrpc \
+        php5-apcu \
+        php5-phalcon \
+        php5-mongo \
+        php5-amqp \
+        php5 \
+        php5-dev \
+        php-pear \
+        php5-dbg \
+        php5-json
 
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
