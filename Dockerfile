@@ -21,6 +21,8 @@ RUN \
         libapr1-dbg \
         libaprutil1-dbg \
         gdb \
+        php5 \
+        php5-dev \
         ffmpeg \
         imagemagick \
         flvtool2 \
@@ -126,7 +128,8 @@ COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
 
 RUN apt-get update && apt-get install -y libpq-dev \
-        php5-pgsql php5-cli \
+        php5-pgsql \ 
+        php5-cli \
         php5-mysql \
         php5-gd \
         php5-mcrypt \
@@ -140,8 +143,6 @@ RUN apt-get update && apt-get install -y libpq-dev \
         php5-phalcon \
         php5-mongo \
         php5-amqp \
-        php5 \
-        php5-dev \
         php-pear \
         php5-dbg \
         php5-json
