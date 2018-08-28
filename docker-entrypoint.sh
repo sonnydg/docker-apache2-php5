@@ -40,6 +40,8 @@ export APACHE_DOCUMENT_ROOT="${APACHE_DOCUMENT_ROOT:-/var/www}"
 echo "Updating apache/php configuration files."
 /usr/local/bin/confd -onetime -backend env
 
+rm -f ${APACHE_PID_FILE}
+
 if [ "$1" = 'apache2' ]; then
     if [ -n "$APACHE_COREDUMP" ]; then
         a2enconf coredump
