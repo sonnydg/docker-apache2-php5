@@ -62,24 +62,7 @@ RUN \
     && chown root:root /usr/local/bin/composer \
     && chmod 0755 /usr/local/bin/composer
 
-RUN apt-get update && apt-get install -y libpq-dev \
-        php5-pgsql \ 
-        php5-cli \
-        php5-mysql \
-        php5-gd \
-        php5-mcrypt \
-        php5-curl \
-        php5-memcache \
-        php5-xsl \
-        php5-xdebug \
-        php5-intl \
-        php5-xmlrpc \
-        php5-apcu \
-        php5-phalcon \
-        php5-mongo \
-        php5-amqp \
-        php5-dbg \
-        php5-json
+
         
 RUN \
     rm /etc/php5/apache2/conf.d/* \
@@ -91,9 +74,6 @@ RUN \
     && rm /etc/apache2/sites-enabled/000-default.conf \
     && rm /var/run/newrelic-daemon.pid
 
-COPY Rediska-0.5.10.tgz /tmp/Rediska-0.5.10.tar.gz
-RUN pear install /tmp/Rediska-0.5.10.tar.gz \
-    && rm /tmp/Rediska-0.5.10.tar.gz
 
 EXPOSE 8080
 VOLUME ["/home","/var/www", "/var/log/apache2", "/var/lib/php5/sessions"]
@@ -147,9 +127,27 @@ COPY apache2-mods/autoindex.conf /etc/apache2/mods-available/autoindex.conf
 COPY apache2-mods/remoteip.conf /etc/apache2/mods-available/remoteip.conf
 RUN a2enmod remoteip
 
+RUN apt-get update && apt-get install -y libpq-dev \
+        php5-pgsql \ 
+        php5-cli \
+        php5-mysql \
+        php5-gd \
+        php5-mcrypt \
+        php5-curl \
+        php5-memcache \
+        php5-xsl \
+        php5-xdebug \
+        php5-intl \
+        php5-xmlrpc \
+        php5-apcu \
+        php5-phalcon \
+        php5-mongo \
+        php5-amqp \
+        php5-dbg \
+        php5-json
+		
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/start_lamp.sh"]
-#CMD ["apache2"]
+CMD ["apache2"]
